@@ -80,3 +80,11 @@ npm install
 # Install Python ATS service
 cd ../ats-engine
 pip install -r requirements.txt
+
+smartresume/
+├── client/           # React frontend
+├── server/           # Express.js backend
+├── ats-engine/       # Python ATS microservice
+├── shared/           # Resume templates, config
+├── README.md
+
