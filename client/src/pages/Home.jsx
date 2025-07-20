@@ -86,14 +86,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-8 px-4 mx-auto max-w-screen-xl">
-        <div className="text-center">
-          <p className="text-gray-600">
-            Made with ❤️ for GirlScript Summer of Code • Open Source Project
-          </p>
-        </div>
-      </footer>
+      
     </div>
   )
 }

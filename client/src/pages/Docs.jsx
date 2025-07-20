@@ -717,151 +717,52 @@ REACT_APP_ATS_API_URL=your_ats_service_url`}
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="flex">
-        {/* Sidebar Navigation */}
-        <div className="w-64 bg-white border-r border-gray-200 min-h-screen sticky top-0">
-          <div className="p-6 border-b border-gray-200">
-            <h1 className="text-xl font-bold text-gray-900">Documentation</h1>
-            <p className="text-gray-600 text-sm mt-1">
-              SmartC.V. Technical Docs
-            </p>
-          </div>
-          <nav className="p-4">
-            <ul className="space-y-2">
-              {navigationItems.map((item) => (
-                <li key={item.id}>
-                  <button
-                    onClick={() => setActiveSection(item.id)}
-                    className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-lg transition-colors ${
-                      activeSection === item.id
-                        ? "bg-blue-50 text-blue-700 border-blue-200"
-                        : "text-gray-700 hover:bg-gray-50"
-                    }`}
-                  >
-                    <item.icon className="h-4 w-4" />
-                    <span className="text-sm font-medium">{item.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="p-4 border-t border-gray-200 mt-auto">
-            <a
-              href="https://github.com/AbhinavDhiman34/SmartC.V."
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github className="h-4 w-4" />
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        {/* Main Content */}
-        <div className="flex-1 p-8">
-          <div className="max-w-4xl">{renderSection()}</div>
-        </div>
+  <div className="flex flex-col md:flex-row">
+    {/* Sidebar Navigation */}
+    <div className="w-full md:w-64 bg-white border-r border-gray-200 min-h-screen sticky top-0 z-10">
+      <div className="p-6 border-b border-gray-200">
+        <h1 className="text-xl font-bold text-gray-900">Documentation</h1>
+        <p className="text-gray-600 text-sm mt-1">SmartC.V. Technical Docs</p>
       </div>
-
-      {/* Quick Links Footer */}
-      <div className="bg-gray-900 text-white py-8 px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div>
-              <h3 className="font-semibold mb-3">Quick Start</h3>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li>
-                  <a href="#installation" className="hover:text-white">
-                    Installation Guide
-                  </a>
-                </li>
-                <li>
-                  <a href="#features" className="hover:text-white">
-                    Features Overview
-                  </a>
-                </li>
-                <li>
-                  <a href="#ats-engine" className="hover:text-white">
-                    ATS Engine
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-3">Development</h3>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li>
-                  <a href="#project-structure" className="hover:text-white">
-                    Project Structure
-                  </a>
-                </li>
-                <li>
-                  <a href="#api-reference" className="hover:text-white">
-                    API Reference
-                  </a>
-                </li>
-                <li>
-                  <a href="#tech-stack" className="hover:text-white">
-                    Tech Stack
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-3">Deployment</h3>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li>
-                  <a href="#deployment" className="hover:text-white">
-                    Deployment Guide
-                  </a>
-                </li>
-                <li>
-                  <a href="https://vercel.com" className="hover:text-white">
-                    Vercel Hosting
-                  </a>
-                </li>
-                <li>
-                  <a href="https://railway.app" className="hover:text-white">
-                    Railway Backend
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-3">Community</h3>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li>
-                  <a
-                    href="https://github.com/AbhinavDhiman34/SmartC.V."
-                    className="hover:text-white"
-                  >
-                    GitHub Repository
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/AbhinavDhiman34/SmartC.V./issues"
-                    className="hover:text-white"
-                  >
-                    Report Issues
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/AbhinavDhiman34/SmartC.V./blob/main/CONTRIBUTING.md"
-                    className="hover:text-white"
-                  >
-                    Contributing Guide
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <nav className="p-4">
+        <ul className="space-y-2">
+          {navigationItems.map((item) => (
+            <li key={item.id}>
+              <button
+                onClick={() => setActiveSection(item.id)}
+                className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-lg transition-colors ${
+                  activeSection === item.id
+                    ? "bg-blue-50 text-blue-700 border-blue-200"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                <item.icon className="h-4 w-4" />
+                <span className="text-sm font-medium">{item.label}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div className="p-4 border-t border-gray-200 mt-auto">
+        <a
+          href="https://github.com/AbhinavDhiman34/SmartC.V."
+          className="flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Github className="h-4 w-4" />
+          View on GitHub
+        </a>
       </div>
     </div>
+
+    {/* Main Content */}
+    <div className="flex-1 p-4 md:p-8">
+      <div className="max-w-4xl mx-auto">{renderSection()}</div>
+    </div>
+  </div>
+</div>
+
   );
 }
 
