@@ -20,7 +20,7 @@ import React, { useState } from "react";
 
 function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
-  
+
 
   const mainSteps = [
     {
@@ -197,11 +197,10 @@ function HowItWorks() {
             <button
               key={index}
               onClick={() => setActiveStep(index)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeStep === index
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeStep === index
                   ? "bg-blue-600 text-white shadow-lg"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
+                }`}
             >
               Step {step.step}
             </button>
@@ -252,15 +251,13 @@ function HowItWorks() {
             {mainSteps.map((_, index) => (
               <React.Fragment key={index}>
                 <div
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index <= activeStep ? "bg-blue-600" : "bg-gray-300"
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all ${index <= activeStep ? "bg-blue-600" : "bg-gray-300"
+                    }`}
                 />
                 {index < mainSteps.length - 1 && (
                   <div
-                    className={`w-8 h-0.5 ${
-                      index < activeStep ? "bg-blue-600" : "bg-gray-300"
-                    }`}
+                    className={`w-8 h-0.5 ${index < activeStep ? "bg-blue-600" : "bg-gray-300"
+                      }`}
                   />
                 )}
               </React.Fragment>
@@ -388,41 +385,6 @@ function HowItWorks() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-600 px-4 mx-auto max-w-screen-xl text-center">
-        <h2 className="font-bold text-3xl text-white mb-4">
-          Ready to Start Your Success Story?
-        </h2>
-        <p className="text-blue-100 mb-8 max-w-2xl mx-auto text-lg">
-          Join thousands of job seekers who have transformed their careers with
-          our AI-powered resume builder
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/dashboard"
-            className="inline-flex justify-center items-center py-3 px-8 text-base font-medium text-blue-600 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 transition-colors"
-          >
-            Get Started Now - It's Free
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </a>
-          <a
-            href="/features"
-            className="inline-flex justify-center items-center py-3 px-8 text-base font-medium text-white border-2 border-white rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
-          >
-            Learn More About Features
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-4 mx-auto max-w-screen-xl">
-        <div className="text-center">
-          <p className="text-gray-400">
-            Made with ❤️ for GirlScript Summer of Code • Open Source Project
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }
