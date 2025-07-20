@@ -16,7 +16,7 @@ import {
     Star
   } from 'lucide-react'
   import React from 'react'
-  import Footer from '../global/Footer';
+  
   
   function Features() {
     const mainFeatures = [
@@ -245,7 +245,7 @@ import {
             </p>
           </div>
         </footer> */}
-        <Footer bgClass="bg-gray-900" textClass="text-gray-400" border={false} />
+        
       </div>
     )
   }

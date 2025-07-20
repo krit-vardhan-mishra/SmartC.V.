@@ -1,6 +1,6 @@
 import { Atom, Edit, Share2 } from 'lucide-react'
 import React from 'react'
-import Footer from '../global/Footer';
+
 
 function Home() {
   return (
@@ -95,7 +95,7 @@ function Home() {
           </p>
         </div>
       </footer> */}
-      <Footer bgClass="bg-white" textClass="text-gray-600" border={true} />
+      
 
     </div>
   )
