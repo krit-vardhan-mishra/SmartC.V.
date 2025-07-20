@@ -51,7 +51,7 @@ function Navbar() {
               Login
             </Link>
             <Link
-              to="/dashboard"
+              to="/createresumesection"
               className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium shadow-md hover:shadow-lg transform hover:scale-105"
             >
               Get Started
