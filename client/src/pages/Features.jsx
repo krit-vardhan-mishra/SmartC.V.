@@ -16,6 +16,7 @@ import {
     Star
   } from 'lucide-react'
   import React from 'react'
+  import Footer from '../global/Footer';
   
   function Features() {
     const mainFeatures = [
@@ -237,13 +238,14 @@ import {
         </section>
   
         {/* Footer */}
-        <footer className="bg-gray-900 text-white py-8 px-4 mx-auto max-w-screen-xl">
+        {/* <footer className="bg-gray-900 text-white py-8 px-4 mx-auto max-w-screen-xl">
           <div className="text-center">
             <p className="text-gray-400">
               Made with ❤️ for GirlScript Summer of Code • Open Source Project
             </p>
           </div>
-        </footer>
+        </footer> */}
+        <Footer bgClass="bg-gray-900" textClass="text-gray-400" border={false} />
       </div>
     )
   }

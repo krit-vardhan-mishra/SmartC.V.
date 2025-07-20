@@ -17,6 +17,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import React, { useState } from "react";
+import Footer from '../global/Footer';
 
 function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
@@ -416,13 +417,14 @@ function HowItWorks() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-4 mx-auto max-w-screen-xl">
+      {/* <footer className="bg-gray-900 text-white py-8 px-4 mx-auto max-w-screen-xl">
         <div className="text-center">
           <p className="text-gray-400">
             Made with ❤️ for GirlScript Summer of Code • Open Source Project
           </p>
         </div>
-      </footer>
+      </footer> */}
+      <Footer bgClass="bg-gray-900" textClass="text-gray-400" border={false} />
     </div>
   );
 }
