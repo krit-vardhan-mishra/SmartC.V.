@@ -1,19 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Home from './pages/Home'
-import Navbar from './global/Header'
+import { Outlet } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import ScrollToTop from "./util/Scroll";
+import Navbar from "./global/Header";
 
+const App = () => {
   return (
     <>
-      <Navbar/>
-      <Home/>
+      <ScrollToTop />
+      <Navbar />
+      <main className="min-h-screen">
+        <Outlet />
+      </main>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
