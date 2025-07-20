@@ -1,3 +1,4 @@
+
 // src/global/Footer.jsx
 
 import { ArrowRight } from "lucide-react";
@@ -41,6 +42,5 @@ const Footer = () => {
             </footer>
         </div>
     );
-};
 
 export default Footer;
