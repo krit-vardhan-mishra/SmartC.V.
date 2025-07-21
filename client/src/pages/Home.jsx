@@ -14,7 +14,7 @@ function Home() {
         </p>
         <div className="flex flex-col mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
           <a 
-            href="/dashboard" 
+            href="/register" 
             className="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors"
           >
             Get Started
