@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/AsyncHandeler.js";
 import { User } from "../models/User.Model.js";
-import { generateAccessAndRefrshToken } from "../utils/GenerateAccessAndRefreshToken.js";
+import { generateAccessAndRefreshToken } from "../utils/GenerateAccessAndRefreshToken.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResposne.js";
 
@@ -52,8 +52,6 @@ export const loginUser = asyncHandler(async (req, res) => {
   if (!isPasswordValid) {
     throw new ApiError(400, "Invalid credentials");
   }
-
-
   // Generate access and refresh tokens
   const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id);
   // Save the refresh token in the user document
@@ -74,8 +72,9 @@ export const loginUser = asyncHandler(async (req, res) => {
       "User logged in successfully"
     )
   );
-
 })
+
+
 export const logoutUser=asyncHandler(async(req,res)=>{
   await User.findByIdAndUpdate(
     req.user._id,
@@ -96,6 +95,7 @@ export const logoutUser=asyncHandler(async(req,res)=>{
   .status(200)
   .clearCookie("accessToken",options)
   .clearCookie("refreshToken",options)
-  .json(new ApiResponse(200,{}, "User logged out"))
+  .json(new ApiResponse(200,{}, "User logged out")
+  );
 });
 
