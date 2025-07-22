@@ -23,7 +23,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     phone,
   });
 
-  const registerUser = await User.findById(user._id).select(
+  const registerUser = await User.findOne({ email }).select(
     "-password -refreshToken"
   );
   if(!registerUser) throw new ApiError(500,"Something went wrong while registering the user")
