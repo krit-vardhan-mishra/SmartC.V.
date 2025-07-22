@@ -16,8 +16,12 @@ import {
   Star
 } from 'lucide-react'
 import React from 'react'
+import { usePageTitle } from '../util/usePageTitle'
 
 function Features() {
+
+  usePageTitle("Features");
+
   const mainFeatures = [
     {
       icon: Bot,

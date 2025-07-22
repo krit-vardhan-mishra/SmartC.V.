@@ -23,9 +23,12 @@ import {
   ArrowRight,
   Info,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { usePageTitle } from "../util/usePageTitle";
 
 function Docs() {
+  usePageTitle("Docs");
+
   const [activeSection, setActiveSection] = useState("overview");
   const [copiedCommand, setCopiedCommand] = useState("");
 
@@ -576,73 +579,73 @@ function Docs() {
           </div>
         );
 
-        case "deployment":
-  return (
-    <div className="space-y-8">
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">🚀 Deployment</h2>
+      case "deployment":
+        return (
+          <div className="space-y-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">🚀 Deployment</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Frontend */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <Globe className="h-8 w-8 text-blue-600 mb-4" />
-          <h3 className="font-semibold text-gray-900 mb-2">
-            Frontend (DigitalOcean App Platform)
-          </h3>
-          <p className="text-gray-600 text-sm mb-4">
-            Deploy your React frontend on DigitalOcean App Platform with GitHub integration.
-          </p>
-          <a
-            href="https://docs.digitalocean.com/products/app-platform/"
-            className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm"
-          >
-            Setup Guide <ExternalLink className="h-3 w-3" />
-          </a>
-        </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Frontend */}
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
+                <Globe className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Frontend (DigitalOcean App Platform)
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Deploy your React frontend on DigitalOcean App Platform with GitHub integration.
+                </p>
+                <a
+                  href="https://docs.digitalocean.com/products/app-platform/"
+                  className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm"
+                >
+                  Setup Guide <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
 
-        {/* Backend */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <Server className="h-8 w-8 text-green-600 mb-4" />
-          <h3 className="font-semibold text-gray-900 mb-2">
-            Backend (Node.js on DigitalOcean)
-          </h3>
-          <p className="text-gray-600 text-sm mb-4">
-            Deploy your Node.js/Express backend using DigitalOcean Droplets with secure CI/CD setup.
-          </p>
-          <a
-            href="https://docs.digitalocean.com/products/droplets/how-to/deploy-nodejs/"
-            className="inline-flex items-center gap-1 text-green-600 hover:text-green-700 text-sm"
-          >
-            Deploy Node.js <ExternalLink className="h-3 w-3" />
-          </a>
-        </div>
+              {/* Backend */}
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
+                <Server className="h-8 w-8 text-green-600 mb-4" />
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Backend (Node.js on DigitalOcean)
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Deploy your Node.js/Express backend using DigitalOcean Droplets with secure CI/CD setup.
+                </p>
+                <a
+                  href="https://docs.digitalocean.com/products/droplets/how-to/deploy-nodejs/"
+                  className="inline-flex items-center gap-1 text-green-600 hover:text-green-700 text-sm"
+                >
+                  Deploy Node.js <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
 
-        {/* Database */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <Database className="h-8 w-8 text-purple-600 mb-4" />
-          <h3 className="font-semibold text-gray-900 mb-2">
-            Database (MongoDB Atlas)
-          </h3>
-          <p className="text-gray-600 text-sm mb-4">
-            Use MongoDB Atlas for a secure and scalable cloud database.
-          </p>
-          <a
-            href="https://mongodb.com/atlas"
-            className="inline-flex items-center gap-1 text-purple-600 hover:text-purple-700 text-sm"
-          >
-            MongoDB Atlas <ExternalLink className="h-3 w-3" />
-          </a>
-        </div>
-      </div>
+              {/* Database */}
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
+                <Database className="h-8 w-8 text-purple-600 mb-4" />
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Database (MongoDB Atlas)
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Use MongoDB Atlas for a secure and scalable cloud database.
+                </p>
+                <a
+                  href="https://mongodb.com/atlas"
+                  className="inline-flex items-center gap-1 text-purple-600 hover:text-purple-700 text-sm"
+                >
+                  MongoDB Atlas <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
+            </div>
 
-      {/* CI/CD Section */}
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-        <h3 className="font-semibold text-green-900 mb-4">CI/CD with GitHub Actions</h3>
-        <p className="text-green-800 mb-4">
-          All contributions go through PRs on the <code>dev</code> branch. Deployment only happens when changes are merged into <code>main</code>.
-        </p>
-        <div className="bg-white border border-green-200 rounded p-4">
-          <pre className="text-sm text-gray-700 overflow-x-auto">
-{`# .github/workflows/deploy.yml
+            {/* CI/CD Section */}
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <h3 className="font-semibold text-green-900 mb-4">CI/CD with GitHub Actions</h3>
+              <p className="text-green-800 mb-4">
+                All contributions go through PRs on the <code>dev</code> branch. Deployment only happens when changes are merged into <code>main</code>.
+              </p>
+              <div className="bg-white border border-green-200 rounded p-4">
+                <pre className="text-sm text-gray-700 overflow-x-auto">
+                  {`# .github/workflows/deploy.yml
 name: Deploy to DigitalOcean
 
 on:
@@ -680,22 +683,22 @@ jobs:
             npm install
             pm2 restart all
 `}
-          </pre>
-        </div>
-        <p className="text-sm text-gray-600 mt-3">
-          🔐 Secrets like <code>DIGITALOCEAN_HOST</code>, <code>USER</code>, and <code>SSH_KEY</code> are safely stored in GitHub Actions secrets.
-        </p>
-      </div>
+                </pre>
+              </div>
+              <p className="text-sm text-gray-600 mt-3">
+                🔐 Secrets like <code>DIGITALOCEAN_HOST</code>, <code>USER</code>, and <code>SSH_KEY</code> are safely stored in GitHub Actions secrets.
+              </p>
+            </div>
 
-      {/* Environment Variables */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-        <h3 className="font-semibold text-blue-900 mb-4">Environment Variables</h3>
-        <p className="text-blue-800 mb-4">
-          Add these environment variables in your <code>.env</code> and <code>.env.local</code> files.
-        </p>
-        <div className="bg-white border border-blue-200 rounded p-4">
-          <pre className="text-sm text-gray-700">
-{`# Backend (.env)
+            {/* Environment Variables */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <h3 className="font-semibold text-blue-900 mb-4">Environment Variables</h3>
+              <p className="text-blue-800 mb-4">
+                Add these environment variables in your <code>.env</code> and <code>.env.local</code> files.
+              </p>
+              <div className="bg-white border border-blue-200 rounded p-4">
+                <pre className="text-sm text-gray-700">
+                  {`# Backend (.env)
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 ATS_SERVICE_URL=your_python_service_url
@@ -703,11 +706,11 @@ ATS_SERVICE_URL=your_python_service_url
 # Frontend (.env.local)
 REACT_APP_API_URL=your_backend_url
 REACT_APP_ATS_API_URL=your_ats_service_url`}
-          </pre>
-        </div>
-      </div>
-    </div>
-  );
+                </pre>
+              </div>
+            </div>
+          </div>
+        );
 
 
       default:
@@ -717,51 +720,56 @@ REACT_APP_ATS_API_URL=your_ats_service_url`}
 
   return (
     <div className="min-h-screen bg-gray-50">
-  <div className="flex flex-col md:flex-row">
-    {/* Sidebar Navigation */}
-    <div className="w-full md:w-64 bg-white border-r border-gray-200 min-h-screen sticky top-0 z-10">
-      <div className="p-6 border-b border-gray-200">
-        <h1 className="text-xl font-bold text-gray-900">Documentation</h1>
-        <p className="text-gray-600 text-sm mt-1">SmartC.V. Technical Docs</p>
-      </div>
-      <nav className="p-4">
-        <ul className="space-y-2">
-          {navigationItems.map((item) => (
-            <li key={item.id}>
-              <button
-                onClick={() => setActiveSection(item.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-lg transition-colors ${
-                  activeSection === item.id
-                    ? "bg-blue-50 text-blue-700 border-blue-200"
-                    : "text-gray-700 hover:bg-gray-50"
-                }`}
-              >
-                <item.icon className="h-4 w-4" />
-                <span className="text-sm font-medium">{item.label}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div className="p-4 border-t border-gray-200 mt-auto">
-        <a
-          href="https://github.com/AbhinavDhiman34/SmartC.V."
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Github className="h-4 w-4" />
-          View on GitHub
-        </a>
-      </div>
-    </div>
+      <div className="grid grid-cols-1 md:grid-cols-[256px_1fr]">
+        {/* Sidebar Navigation */}
+        <div className="bg-white border-b md:border-r border-gray-200 md:min-h-screen md:sticky md:top-0 z-20">
+          <div className="p-4 md:p-6 border-b border-gray-200">
+            <h1 className="text-xl font-bold text-gray-900">Documentation</h1>
+            <p className="text-gray-600 text-sm mt-1">SmartC.V. Technical Docs</p>
+          </div>
+          <nav className="p-4">
+            <ul className="flex md:flex-col overflow-auto hide-scrollbar">
+              {navigationItems.map((item) => (
+                <li key={item.id} className="flex-shrink-0 md:flex-shrink md:w-full">
+                  <button
+                    onClick={() => setActiveSection(item.id)}
+                    className={`whitespace-nowrap w-full flex items-center gap-3 px-3 py-2 text-left rounded-lg transition-colors ${activeSection === item.id
+                      ? "bg-blue-50 text-blue-700 border-blue-200"
+                      : "text-gray-700 hover:bg-gray-50"
+                      }`}
+                  >
+                    <item.icon className="h-4 w-4" />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          
+          <div className="hidden md:block p-4 border-t border-gray-200 mt-auto">
+            <a
+              href="https://github.com/AbhinavDhiman34/SmartC.V."
+              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="h-4 w-4" />
+              View on GitHub
+            </a>
+          </div>
+        </div>
 
-    {/* Main Content */}
-    <div className="flex-1 p-4 md:p-8">
-      <div className="max-w-4xl mx-auto">{renderSection()}</div>
+        {/* Main Content */}
+        <div className="flex-1 p-4 md:p-8 overflow-x-hidden">
+          <div className="max-w-4xl mx-auto space-y-6">
+            {/* Make sure content is visible */}
+            <div className="block w-full">
+              {renderSection()}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
   );
 }

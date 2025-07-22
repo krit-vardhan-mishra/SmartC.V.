@@ -17,10 +17,12 @@ import {
   TrendingUp,
 } from "lucide-react";
 import React, { useState } from "react";
+import { usePageTitle } from "../util/usePageTitle";
 
 function HowItWorks() {
-  const [activeStep, setActiveStep] = useState(0);
+  usePageTitle("Working");
 
+  const [activeStep, setActiveStep] = useState(0);
 
   const mainSteps = [
     {
