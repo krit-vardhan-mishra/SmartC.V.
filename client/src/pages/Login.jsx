@@ -25,8 +25,6 @@ function Login() {
       if (res.status === 200) {
         alert("Login successful!");
 
-      } else {
-
       }
     } catch (err) {
       alert("Login failed");
