@@ -44,4 +44,9 @@ app.use(
 
 app.use(express.static("public"));
 
+
+
+import userRouter from "./routes/User.Routes.js";
+app.use("/api/v1/user", userRouter);
+
 export default app;

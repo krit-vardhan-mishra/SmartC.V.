@@ -36,4 +36,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 
 
 // login user api
+export const LoginUser = asyncHandler(async (req, res) => {
+  
+})
 
