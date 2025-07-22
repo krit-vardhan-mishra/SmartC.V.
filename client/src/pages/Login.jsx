@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { loginUser } from "../service/UserApi";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
 
 function Login() {
@@ -10,7 +10,6 @@ function Login() {
     password: ''
   });
 
-  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setFormData({
@@ -25,7 +24,7 @@ function Login() {
       const res = await loginUser(formData);
       if (res.status === 200) {
         alert("Login successful!");
-        navigate("/dashboard");
+
       } else {
 
       }
