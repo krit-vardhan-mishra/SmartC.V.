@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { loginUser } from "../service/UserApi";
+import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
 
 function Login() {
@@ -9,6 +10,8 @@ function Login() {
     password: ''
   });
 
+  const navigate = useNavigate()
+
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -16,10 +19,19 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement login logic
-    console.log('Login form submitted:', formData);
+    try {
+      const res = await loginUser(formData);
+      if (res.status === 200) {
+        alert("Login successful!");
+        navigate("/dashboard");
+      } else {
+
+      }
+    } catch (err) {
+      alert("Login failed");
+    }
   };
 
   return (
@@ -33,7 +45,7 @@ function Login() {
             Sign in to your account to continue building amazing resumes
           </p>
         </div>
-        
+
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
@@ -56,7 +68,7 @@ function Login() {
                 />
               </div>
             </div>
-            
+
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Password

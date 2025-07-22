@@ -16,7 +16,10 @@ const allowedOrigins = process.env.CORS_ORIGIN?.split(",").map((origin) =>
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("Allowed origins:", allowedOrigins);
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (
+      !origin ||
+      allowedOrigins.some((allowed) => allowed.toLowerCase() === origin.toLowerCase())
+    ) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
