@@ -1,9 +1,9 @@
 import User from "../models/User.Model.js";
 
 
-export const generateAccessAndRefrshToken = async (userid) => {
+export const generateAccessAndRefreshToken = async (userId) => {
     try {
-      const user = await User.findById(userid);
+      const user = await User.findById(userId);
       const accessToken = user.generateAccessToken();
       const refreshToken = user.generateRefreshToken();
   
@@ -14,7 +14,7 @@ export const generateAccessAndRefrshToken = async (userid) => {
     } catch (error) {
       throw new ApiError(
         500,
-        "SOMETHING went wrong while generating refresh and access token"
+        "Something went wrong while generating refresh and access token"
       );
     }
   };
