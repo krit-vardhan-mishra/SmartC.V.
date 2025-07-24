@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import skillRouter from "./routes/Skill.Routes.js";
+app.use("/api/v1/skills", skillRouter);
 const app = express();
 
 // app.use(cors({
