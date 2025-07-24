@@ -13,7 +13,7 @@ const App = () => {
     <>
       <ScrollToTop />
       <Navbar />
-      <main className="min-h-screen">
+      <main className="min-h-screen pt-28 px-4 sm:px-6 lg:px-8">
         <Outlet />
       </main>
 
