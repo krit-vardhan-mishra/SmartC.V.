@@ -7,3 +7,7 @@ const API = axios.create({
 
 export const registerUser = (user) =>
   API.post("/user/registeruser", user);
+
+
+export const loginUser = (user) =>
+  API.post("/user/loginuser", user);

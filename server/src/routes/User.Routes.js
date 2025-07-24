@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { loginUser, registerUser } from "../controllers/User.Controller.js";
 
-const UserRouter = Router();
 
+
+const UserRouter = Router();
 
 
 UserRouter.route('/registeruser').post(registerUser);

@@ -26,8 +26,12 @@ export const registerUser = asyncHandler(async (req, res) => {
   const registerUser = await User.findOne({ email }).select(
     "-password -refreshToken"
   );
+
   if (!registerUser)
     throw new ApiError(500, "Something went wrong while registering the user");
+
+  if (!registerUser) throw new ApiError(500, "Something went wrong while registering the user")
+
 
   return res
     .status(200)
@@ -52,16 +56,14 @@ export const loginUser = asyncHandler(async (req, res) => {
   }
 
   // Generate access and refresh tokens
-  const { accessToken, refreshToken } = await generateAccessAndRefreshToken(
-    user._id
-  );
+
+  const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id);
   // Save the refresh token in the user document
-  const loggedInUser = await User.findById(user._id).select(
-    "-password -refreshToken"
-  );
+  const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
   const options = {
     httpOnly: true, //only server can modify them
-    secure: true,
+    secure: true
+
   };
   return res
     .status(200)
@@ -69,35 +71,39 @@ export const loginUser = asyncHandler(async (req, res) => {
     .cookie("refreshToken", refreshToken, options)
     .json(
       new ApiResponse(
-        200,
-        {
-          user: loggedInUser,
-          accessToken,
-          refreshToken,
-        },
+
+        200, {
+        user: loggedInUser, accessToken, refreshToken
+      },
         "User logged in successfully"
       )
     );
-});
+
+})
+
 export const logoutUser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
     {
       $set: {
-        refreshToken: undefined,
-      },
+
+        refreshToken: undefined
+      }
     },
     {
-      new: true,
+      new: true
     }
-  );
+  )
   const options = {
     httpOnly: true, //only server can modify them
-    secure: true,
-  };
+    secure: true
+  }
+
   return res
     .status(200)
     .clearCookie("accessToken", options)
     .clearCookie("refreshToken", options)
-    .json(new ApiResponse(200, {}, "User logged out"));
+
+    .json(new ApiResponse(200, {}, "User logged out"))
+
 });
