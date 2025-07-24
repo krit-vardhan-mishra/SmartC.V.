@@ -30,15 +30,17 @@ function Register() {
     try {
       const { confirmPassword, ...submitData } = formData; // remove confirmPassword
       const res = await registerUser(submitData);
-      if (res.status === 200) {
+      if (res.status === 200 || res.status === 201) {
         alert("Registration successful!");
         // Optionally redirect to login
       } else {
         alert(res.message || "Registration failed");
       }
     } catch (err) {
-      alert("Registration failed");
+        console.error("❌ Registration error:", err.response?.data || err.message);
+        alert(err.response?.data?.message || "Registration failed");
     }
+
   };
 
   return (

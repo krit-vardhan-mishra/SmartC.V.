@@ -1,14 +1,14 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import skillRouter from "./routes/Skill.Routes.js";
+import userRouter from "./routes/User.Routes.js";
 
-const app = express();
+const app = express();  // <-- MUST be first before using app
 
-// app.use(cors({
-//     origin: process.env.CORS_ORIGIN,
-//     credentials: true
-// }));
+app.use("/api/v1/skills", skillRouter);
 
+// CORS Setup
 const allowedOrigins = process.env.CORS_ORIGIN?.split(",").map((origin) =>
   origin.trim()
 );
@@ -30,13 +30,16 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(cookieParser()); // serve se user ke brower ki cookies access aur set krne ke liye
+app.use(cookieParser());
 
 app.use(
   express.json({
     limit: "20kb",
   })
 );
+app.get("/", (req, res) => {
+  res.send("SmartCV Backend is running!");
+});
 
 app.use(
   express.urlencoded({
@@ -47,9 +50,6 @@ app.use(
 
 app.use(express.static("public"));
 
-
-
-import userRouter from "./routes/User.Routes.js";
 app.use("/api/v1/user", userRouter);
 
 export default app;

@@ -1,26 +1,17 @@
-import { Outlet } from "react-router-dom";
+import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
-import ScrollToTop from "./util/Scroll";
-import Navbar from "./global/Header";
-
-import Footer from './global/Footer';
-
-
-
-
-const App = () => {
+export default function App() {
   return (
-    <>
-      <ScrollToTop />
-      <Navbar />
-      <main className="min-h-screen pt-28 px-4 sm:px-6 lg:px-8">
+    <div>
+      <nav className="p-4 bg-gray-100">
+        <Link to="/" className="mr-4">Home</Link>
+        <Link to="/skill-match">Skill Match</Link>
+        {/* add other nav links as needed */}
+      </nav>
+      <main className="p-6">
         <Outlet />
       </main>
-
-      <Footer />
-
-    </>
+    </div>
   );
-};
-
-export default App;
+}
