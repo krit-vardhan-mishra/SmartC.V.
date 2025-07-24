@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { registerUser } from "../service/UserApi";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,7 +10,8 @@ function Register() {
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    phone: "",
   });
 
   const handleInputChange = (e) => {
@@ -19,14 +21,24 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement registration logic
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
-    console.log('Register form submitted:', formData);
+    try {
+      const { confirmPassword, ...submitData } = formData; // remove confirmPassword
+      const res = await registerUser(submitData);
+      if (res.status === 200) {
+        alert("Registration successful!");
+        // Optionally redirect to login
+      } else {
+        alert(res.message || "Registration failed");
+      }
+    } catch (err) {
+      alert("Registration failed");
+    }
   };
 
   return (
@@ -40,7 +52,7 @@ function Register() {
             Join thousands of job seekers building amazing resumes
           </p>
         </div>
-        
+
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
@@ -84,7 +96,25 @@ function Register() {
                 />
               </div>
             </div>
-            
+
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                Phone Number
+              </label>
+              <div className="relative">
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="appearance-none relative block w-full pl-3 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+            </div>
+
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Password
