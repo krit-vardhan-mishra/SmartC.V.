@@ -87,4 +87,12 @@ smartresume/
 ├── ats-engine/       # Python ATS microservice
 ├── shared/           # Resume templates, config
 ├── README.md
+```
 
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
