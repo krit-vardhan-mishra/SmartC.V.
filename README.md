@@ -7,7 +7,7 @@
 🧑‍💻 Built with the MERN Stack + Python NLP.  
 🎯 Ideal for job seekers, developers, and students preparing for placements.
 
----
+
 
 ## 🌟 Features
 
@@ -20,7 +20,7 @@
 - 📊 Dashboard for saved resumes and reports
 - 📂 Resume versioning and history
 
----
+
 
 ## 🧱 Tech Stack
 
@@ -34,7 +34,6 @@
 | PDF Export    | html2pdf.js / Puppeteer        |
 | Hosting       | Vercel (FE), Render/Railway (BE), MongoDB Atlas |
 
----
 
 ## 🧠 ATS Score Checker – How It Works
 
@@ -50,7 +49,6 @@
 
 > The scoring engine is built with Python and uses NLP libraries like `spaCy`, `scikit-learn`, and `sentence-transformers`.
 
----
 
 ## 🧑‍💻 Getting Started
 
@@ -88,9 +86,16 @@ smartresume/
 ├── shared/           # Resume templates, config
 ├── README.md
 ```
+
 <p align="center">
   <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;">
     ⬆️ Back to Top
   </a>
 </p>
+
+
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
 
