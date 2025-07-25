@@ -107,3 +107,34 @@ export const logoutUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "User logged out"))
 
 });
+
+// Update resume for authenticated user
+export const updateResume = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { resume } = req.body;
+
+  // Ensure the user can only update their own resume
+  if (id !== req.user._id.toString()) {
+    throw new ApiError(403, "You can only update your own resume");
+  }
+
+  // Validate resume data
+  if (!resume || typeof resume !== 'object') {
+    throw new ApiError(400, "Valid resume data is required");
+  }
+
+  // Update the user's resume
+  const updatedUser = await User.findByIdAndUpdate(
+    id,
+    { $set: { resume } },
+    { new: true, runValidators: true }
+  ).select("-password -refreshToken");
+
+  if (!updatedUser) {
+    throw new ApiError(404, "User not found");
+  }
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, updatedUser, "Resume updated successfully"));
+});

@@ -13,6 +13,48 @@ const userSchema = new mongoose.Schema(
     atsUsage: { type: Number, default: 0 },
     createdAt: { type: Date, default: Date.now },
     refreshToken: String,
+    resume: {
+      personalInfo: {
+        fullName: String,
+        email: String,
+        phone: String,
+        address: String,
+        linkedin: String,
+        github: String,
+        portfolio: String,
+      },
+      summary: String,
+      experience: [{
+        company: String,
+        position: String,
+        startDate: Date,
+        endDate: Date,
+        current: Boolean,
+        description: String,
+      }],
+      education: [{
+        institution: String,
+        degree: String,
+        field: String,
+        startDate: Date,
+        endDate: Date,
+        gpa: String,
+      }],
+      skills: [String],
+      projects: [{
+        name: String,
+        description: String,
+        technologies: [String],
+        github: String,
+        demo: String,
+      }],
+      certifications: [{
+        name: String,
+        issuer: String,
+        date: Date,
+        credentialId: String,
+      }],
+    },
   },
   { timestamps: true }
 );
