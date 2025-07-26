@@ -16,9 +16,13 @@ const userSchema = new mongoose.Schema(
     resume: {
       personalInfo: {
         fullName: String,
-        email: String,
-        phone: String,
-        address: String,
+ personalInfo: {
+   fullName: String,
+   address: String,
+   linkedin: String,
+   github: String,
+   portfolio: String,
+ },        address: String,
         linkedin: String,
         github: String,
         portfolio: String,
