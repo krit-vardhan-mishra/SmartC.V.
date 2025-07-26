@@ -147,26 +147,38 @@ export const downloadResume = asyncHandler(async (req, res) => {
   if (id !== req.user._id.toString()) {
     throw new ApiError(403, "You can only download your own resume");
   }
-  const user = await User.findById(id);
-  if (!user || !user.resume) {
+  const user = await User.findById(id).select("name email phone resume");
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+  if (!user.resume) {
     throw new ApiError(404, "Resume not found");
   }
-  const resume = user.resume;
-  const doc = new PDFDocument();
+  const resume = user.resume;  const doc = new PDFDocument();
   res.setHeader('Content-Type', 'application/pdf');
   res.setHeader('Content-Disposition', 'attachment; filename=resume.pdf');
   doc.pipe(res);
-  doc.fontSize(20).text(user.name || resume.personalInfo.fullName || 'Name', { align: 'center' });
+  doc.fontSize(20).text(
+    user.name || resume.personalInfo?.fullName || 'Name',
+    { align: 'center' }
+  );
   doc.fontSize(12).text(`Email: ${user.email}`, { align: 'center' });
   doc.fontSize(12).text(`Phone: ${user.phone}`, { align: 'center' });
   doc.moveDown();
   doc.fontSize(14).text('Personal Information');
-  doc.fontSize(12).text(`Address: ${resume.personalInfo.address || ''}`);
-  doc.text(`LinkedIn: ${resume.personalInfo.linkedin || ''}`);
-  doc.text(`GitHub: ${resume.personalInfo.github || ''}`);
-  doc.text(`Portfolio: ${resume.personalInfo.portfolio || ''}`);
-  doc.moveDown();
-  if (resume.summary) {
+  doc.fontSize(12).text(
+    `Address: ${resume.personalInfo?.address || ''}`
+  );
+  doc.text(
+    `LinkedIn: ${resume.personalInfo?.linkedin || ''}`
+  );
+  doc.text(
+    `GitHub: ${resume.personalInfo?.github || ''}`
+  );
+  doc.text(
+    `Portfolio: ${resume.personalInfo?.portfolio || ''}`
+  );
+  doc.moveDown();  if (resume.summary) {
     doc.fontSize(14).text('Summary');
     doc.fontSize(12).text(resume.summary);
     doc.moveDown();
