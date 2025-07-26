@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import skillRouter from "./routes/Skill.Routes.js";
 import userRouter from "./routes/User.Routes.js";
+import resumeRouter from "./routes/Resume.Routes.js";
 
 const app = express();  // <-- MUST be first before using app
 
@@ -51,5 +52,6 @@ app.use(
 app.use(express.static("public"));
 
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/resumes", resumeRouter);
 
 export default app;
