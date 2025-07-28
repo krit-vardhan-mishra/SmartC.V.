@@ -31,6 +31,9 @@ function Navbar() {
             <Link to="/docs" className="text-white hover:text-[#00FFE6] transition-colors font-medium hover:scale-105 transform duration-200">
               Docs
             </Link>
+            <Link to="/skill-match" className="text-white hover:text-[#00FFE6] transition-colors font-medium hover:scale-105 transform duration-200">
+              ATS Checker
+            </Link>
             <a
               href="https://github.com/AbhinavDhiman34/SmartC.V."
               className="text-white hover:text-[#00FFE6] transition-colors font-medium flex items-center space-x-1 hover:scale-105 transform duration-200"
