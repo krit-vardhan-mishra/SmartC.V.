@@ -29,9 +29,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   if (!registerUser)
     throw new ApiError(500, "Something went wrong while registering the user");
-
-  if (!registerUser) throw new ApiError(500, "Something went wrong while registering the user")
-
+  
 
   return res
     .status(200)
