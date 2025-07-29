@@ -7,8 +7,6 @@
 🧑‍💻 Built with the MERN Stack + Python NLP.  
 🎯 Ideal for job seekers, developers, and students preparing for placements.
 
-
-
 ## 🌟 Features
 
 - ✨ **Drag-and-Drop Resume Builder**
@@ -20,20 +18,17 @@
 - 📊 Dashboard for saved resumes and reports
 - 📂 Resume versioning and history
 
-
-
 ## 🧱 Tech Stack
 
-| Layer         | Technology                     |
-|--------------|----------------------------------|
-| Frontend      | React.js, Tailwind CSS, Formik |
-| Backend       | Node.js, Express.js            |
-| Database      | MongoDB + Mongoose             |
-| ATS Engine    | Python (Flask / FastAPI), spaCy, scikit-learn |
-| File Uploads  | Multer, React Dropzone         |
-| PDF Export    | html2pdf.js / Puppeteer        |
-| Hosting       | Vercel (FE), Render/Railway (BE), MongoDB Atlas |
-
+| Layer        | Technology                                      |
+| ------------ | ----------------------------------------------- |
+| Frontend     | React.js, Tailwind CSS, Formik                  |
+| Backend      | Node.js, Express.js                             |
+| Database     | MongoDB + Mongoose                              |
+| ATS Engine   | Python (Flask / FastAPI), spaCy, scikit-learn   |
+| File Uploads | Multer, React Dropzone                          |
+| PDF Export   | html2pdf.js / Puppeteer                         |
+| Hosting      | Vercel (FE), Render/Railway (BE), MongoDB Atlas |
 
 ## 🧠 ATS Score Checker – How It Works
 
@@ -48,7 +43,6 @@
    - Suggestions for improvement
 
 > The scoring engine is built with Python and uses NLP libraries like `spaCy`, `scikit-learn`, and `sentence-transformers`.
-
 
 ## 🧑‍💻 Getting Started
 
@@ -79,6 +73,10 @@ npm install
 cd ../ats-engine
 pip install -r requirements.txt
 
+# Download the required spaCy language model
+python -m spacy download en_core_web_sm
+
+
 smartresume/
 ├── client/           # React frontend
 ├── server/           # Express.js backend
@@ -93,9 +91,6 @@ smartresume/
   </a>
 </p>
 
-
-
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
-
