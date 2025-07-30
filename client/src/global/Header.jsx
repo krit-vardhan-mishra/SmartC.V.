@@ -4,7 +4,15 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const handleGetStarted = () => {
+    const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+    if (isAuthenticated) {
+      navigate("/createresumesection");
+    } else {
+      navigate("/login");
+    }
+  };
   return (
      <nav className="fixed z-50 top-4 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[90%] lg:w-[80%] bg-gradient-to-r from-blue-600 to-purple-600 md:rounded-full shadow-lg border border-[#00FFE6]">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">

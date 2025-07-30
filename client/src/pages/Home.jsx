@@ -2,6 +2,16 @@ import { Atom, Edit, Share2 } from 'lucide-react'
 import React from 'react'
 
 function Home() {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+    if (isAuthenticated) {
+      navigate("/createresumesection");
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
