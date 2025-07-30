@@ -88,7 +88,7 @@ smartresume/
 ```
 
 <p align="center">
-  <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;">
+  <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;"  target="_blank" rel="noopener noreferrer">
     ⬆️ Back to Top
   </a>
 </p>
