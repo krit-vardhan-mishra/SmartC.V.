@@ -1,6 +1,6 @@
-# SmartC.V.
+# SmartCV
 
-# 📄 SmartResume – ATS Score Checker & Resume Builder
+# 📄 SmartCV – ATS Score Checker & Resume Builder
 
 🚀 An open-source, modern Resume Builder with a powerful ATS Score Checker that helps users build professional resumes and get instant feedback based on job descriptions.
 
@@ -64,8 +64,8 @@
 ### 📦 Clone & Install
 
 ```bash
-git clone https://github.com/your-username/smartresume.git
-cd smartresume
+git clone https://github.com/your-username/smartcv.git
+cd smartcv
 
 # Install frontend
 cd client
