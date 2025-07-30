@@ -23,8 +23,11 @@ function Login() {
     try {
       const res = await loginUser(formData);
       if (res.status === 200) {
+        // SET THE FLAG HERE
+        localStorage.setItem('isLoggedIn', 'true');
         alert("Login successful!");
-
+        // Optionally redirect to dashboard
+        // navigate("/createresumesection");
       }
     } catch (err) {
       alert("Login failed");

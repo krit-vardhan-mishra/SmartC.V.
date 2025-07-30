@@ -1,6 +1,6 @@
 import { Atom, Edit, Share2 } from 'lucide-react'
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 function Home() {
   const navigate = useNavigate();
 
