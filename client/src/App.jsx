@@ -1,15 +1,17 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Navbar from "./global/Header";
 import Footer from "./global/Footer";
 
 export default function App() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="p-6">
+
+      <main className="flex-grow p-6">
         <Outlet />
       </main>
+
       <Footer />
     </div>
   );
