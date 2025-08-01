@@ -28,19 +28,17 @@ function Register() {
       return;
     }
     try {
-      const { confirmPassword, ...submitData } = formData; // remove confirmPassword
+      const { confirmPassword, ...submitData } = formData;
       const res = await registerUser(submitData);
       if (res.status === 200 || res.status === 201) {
         alert("Registration successful!");
-        // Optionally redirect to login
       } else {
         alert(res.message || "Registration failed");
       }
     } catch (err) {
-        console.error("❌ Registration error:", err.response?.data || err.message);
-        alert(err.response?.data?.message || "Registration failed");
+      console.error("❌ Registration error:", err.response?.data || err.message);
+      alert(err.response?.data?.message || "Registration failed");
     }
-
   };
 
   return (
@@ -192,11 +190,11 @@ function Register() {
             />
             <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
               I agree to the{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-500">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500">
                 Terms of Service
               </a>{' '}
               and{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-500">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500">
                 Privacy Policy
               </a>
             </label>

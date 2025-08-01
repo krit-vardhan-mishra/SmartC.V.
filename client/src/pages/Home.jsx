@@ -4,7 +4,6 @@ import React from 'react'
 function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
       <section className="py-16 px-4 mx-auto max-w-screen-xl text-center lg:py-24">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
           Build Your Resume <span className='text-blue-600'>With AI</span>
@@ -14,7 +13,9 @@ function Home() {
         </p>
         <div className="flex flex-col mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
           <a 
-            href="/register" 
+            href="/register"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors"
           >
             Get Started
@@ -24,6 +25,8 @@ function Home() {
           </a>
           <a 
             href="https://github.com/AbhinavDhiman34/SmartC.V." 
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 transition-colors"
           >
             View on GitHub
@@ -31,7 +34,6 @@ function Home() {
         </div>
       </section>
 
-      {/* How it Works Section */}
       <section className="py-16 bg-white px-4 mx-auto max-w-screen-xl text-center">
         <h2 className="font-bold text-3xl text-gray-900 mb-2">How it Works</h2>
         <p className="text-gray-600 mb-12">Create your resume in just 3 simple steps</p>
@@ -63,7 +65,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Open Source Section */}
       <section className="py-16 bg-gray-50 px-4 mx-auto max-w-screen-xl text-center">
         <h2 className="font-bold text-3xl text-gray-900 mb-4">Open Source & Community Driven</h2>
         <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -73,22 +74,24 @@ function Home() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
             href="https://github.com/AbhinavDhiman34/SmartC.V." 
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
           >
             Contribute on GitHub
           </a>
           <a 
             href="/docs" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors"
           >
             View Documentation
           </a>
         </div>
       </section>
-
-      
     </div>
   )
 }
 
-export default Home
+export default Home;
