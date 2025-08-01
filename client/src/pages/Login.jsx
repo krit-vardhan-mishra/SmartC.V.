@@ -26,7 +26,7 @@ function Login() {
         // SET THE FLAG HERE
         localStorage.setItem('isLoggedIn', 'true');
         alert("Login successful!");
-
+        navigate("/resumedashboard");
       }
     } catch (err) {
       alert("Login failed");

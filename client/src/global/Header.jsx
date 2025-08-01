@@ -7,7 +7,7 @@ function Navbar() {
   const handleGetStarted = () => {
     const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
     if (isAuthenticated) {
-      navigate("/createresumesection");
+      navigate("/resumedashboard");
     } else {
       navigate("/login");
     }
@@ -52,7 +52,7 @@ function Navbar() {
             <a href="/login" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-white hover:text-gray-900 font-medium transition-colors">
               Login
             </a>
-            <a href="/dashboard" target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium shadow-md hover:shadow-lg transform hover:scale-105">
+            <a href="/resumedashboard" target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium shadow-md hover:shadow-lg transform hover:scale-105">
               Get Started
             </a>
           </div>
@@ -96,7 +96,7 @@ function Navbar() {
                 <a href="/login" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 text-white hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
                   Login
                 </a>
-                <a href="/dashboard" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 mt-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium text-center" onClick={() => setIsMenuOpen(false)}>
+                <a href="/resumedashboard" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 mt-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium text-center" onClick={() => setIsMenuOpen(false)}>
                   Get Started
                 </a>
               </div>

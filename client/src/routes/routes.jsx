@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       { path: 'how-it-works', element: <HowItWorks /> },
       { path: 'docs', element: <Docs /> },
       { 
-        path: 'createresumesection', 
+        path: 'resumedashboard', 
         element: (
           <ProtectedRoute>
             <ResumeDash />
