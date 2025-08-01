@@ -226,6 +226,8 @@ function Features() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-8 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors"
           >
             Start Building Now
@@ -233,6 +235,8 @@ function Features() {
           </a>
           <a
             href="/pricing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-8 text-base font-medium text-gray-900 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
           >
             View Pricing

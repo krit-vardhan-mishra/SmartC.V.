@@ -26,8 +26,7 @@ function Login() {
         // SET THE FLAG HERE
         localStorage.setItem('isLoggedIn', 'true');
         alert("Login successful!");
-        // Optionally redirect to dashboard
-        // navigate("/createresumesection");
+
       }
     } catch (err) {
       alert("Login failed");
