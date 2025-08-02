@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import spacy
+import base64
+import tempfile
+
 import pdfplumber
 import docx
 import os
@@ -14,6 +17,9 @@ import logging
 from werkzeug.utils import secure_filename
 
 from scorer.scorer import score_resume
+from utils.pdf_reader import extract_text_from_pdf
+from utils.docx_reader import extract_text_from_docx
+from scorer.keyword_extractor import extract_keywords
 
 app = Flask(__name__)
 CORS(app)  # Enable modern CORS support
@@ -276,5 +282,107 @@ def score():
             "processing_time": (datetime.now() - start_time).total_seconds()
         }), 500
 
+
+
+    try:
+        data = request.get_json()
+        resume_b64 = data.get("resume")
+        jd_b64 = data.get("jd")
+        resume_name = data.get("resume_name", "resume.pdf")
+        jd_name = data.get("jd_name", "jobdesc.pdf")
+
+        if not resume_b64 or not jd_b64:
+            return jsonify({"error": "Both resume and job description are required"}), 400
+
+        # Decode base64 files and write to temp files
+        resume_temp = tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(resume_name)[-1])
+        jd_temp = tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(jd_name)[-1])
+
+        resume_temp.write(base64.b64decode(resume_b64))
+        jd_temp.write(base64.b64decode(jd_b64))
+        resume_temp.close()
+        jd_temp.close()
+
+        # Extract text from both files
+        resume_text, resume_method = extract_text_from_pdf(open(resume_temp.name, "rb")) \
+            if resume_name.endswith(".pdf") else extract_text_from_docx(open(resume_temp.name, "rb"))
+        
+        jd_text, jd_method = extract_text_from_pdf(open(jd_temp.name, "rb")) \
+            if jd_name.endswith(".pdf") else extract_text_from_docx(open(jd_temp.name, "rb"))
+
+        if not resume_text.strip() or not jd_text.strip():
+            return jsonify({"error": "Text extraction failed"}), 400
+
+        # Extract keywords from JD
+        doc = nlp(jd_text.lower())
+        jd_keywords = set()
+        for token in doc:
+            if token.pos_ in ["NOUN", "PROPN"] and not token.is_stop and token.is_alpha and len(token.text) > 2:
+                jd_keywords.add(token.text.strip())
+
+        jd_keywords = list(jd_keywords)[:25]
+
+        # Score
+        result = score_resume(resume_text, jd_keywords)
+        result.update({
+            "extraction_methods": {
+                "resume": resume_method,
+                "jd": jd_method
+            },
+            "keywords_used": len(jd_keywords),
+            "timestamp": datetime.now().isoformat()
+        })
+
+        return jsonify(result)
+    
+    except Exception as e:
+        logger.error(f"Error in /match: {e}", exc_info=True)
+        return jsonify({"error": "Server error during matching"}), 500
+
+
+
+@app.route("/match", methods=["POST"])
+def match_resume():
+    try:
+        if "resume" not in request.files or "job_description" not in request.form:
+            return jsonify({"error": "Resume file and job description text are required"}), 400
+
+        file = request.files["resume"]
+        job_description = request.form["job_description"]
+
+        if file.filename == "":
+            return jsonify({"error": "No resume file selected"}), 400
+
+        # Save temp file
+        with tempfile.NamedTemporaryFile(delete=False) as tmp:
+            file.save(tmp.name)
+            file_path = tmp.name
+
+        # Extract resume text
+        if file.filename.lower().endswith(".pdf"):
+            resume_text, _ = extract_text_from_pdf(open(file_path, "rb"))
+        elif file.filename.lower().endswith(".docx"):
+            resume_text, _ = extract_text_from_docx(open(file_path, "rb"))
+        else:
+            os.remove(file_path)
+            return jsonify({"error": "Unsupported file type"}), 400
+
+        os.remove(file_path)
+
+        # ✅ Extract keywords from JD using extractor module
+        job_keywords = extract_keywords(job_description, top_n=25)
+
+        # Score resume
+        result = score_resume(resume_text, job_keywords)
+        result.update({
+            "keywords_used": len(job_keywords),
+            "timestamp": datetime.now().isoformat()
+        })
+
+        return jsonify(result)
+
+    except Exception as e:
+        logger.error(f"Error in /match route: {e}", exc_info=True)
+        return jsonify({"error": "Server error during matching"}), 500
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
