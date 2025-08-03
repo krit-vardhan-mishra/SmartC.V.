@@ -1,13 +1,16 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "/api/v1",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   withCredentials: true,
 });
 
 // Register User
-export const registerUser = (user) =>
-  API.post("/user/register", user); // ✅ matches backend route
+export const registerUser = (user) =>{
+  console.log(user);
+  return API.post("/user/register", user);
+}
+ // ✅ matches backend route
 
 // Login User
 export const loginUser = (user) =>
