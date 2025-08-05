@@ -42,7 +42,7 @@ export default function SkillMatch() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-19 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
