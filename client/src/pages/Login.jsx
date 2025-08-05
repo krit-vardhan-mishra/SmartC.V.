@@ -8,7 +8,8 @@ function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
-  });
+  });  
+
 
   const handleInputChange = (e) => {
     setFormData({
@@ -22,7 +23,10 @@ function Login() {
     try {
       const res = await loginUser(formData);
       if (res.status === 200) {
+        // SET THE FLAG HERE
+        localStorage.setItem('isLoggedIn', 'true');
         alert("Login successful!");
+        navigate("/resumedashboard");
       }
     } catch (err) {
       alert("Login failed");
@@ -111,12 +115,7 @@ function Login() {
             </div>
 
             <div className="text-sm">
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-blue-600 hover:text-blue-500"
-              >
+              <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
                 Forgot your password?
               </a>
             </div>

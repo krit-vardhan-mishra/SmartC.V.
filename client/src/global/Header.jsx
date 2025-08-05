@@ -1,10 +1,17 @@
 import { Github, Menu, X, FileText, ExternalLink } from 'lucide-react';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link,useNavigate } from 'react-router-dom';
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const handleGetStarted = () => {
+    const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+    if (isAuthenticated) {
+      navigate("/resumedashboard");
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <nav className="fixed z-50 top-4 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[90%] lg:w-[80%] bg-gradient-to-r from-blue-600 to-purple-600 md:rounded-full shadow-lg border border-[#00FFE6]">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +52,7 @@ function Navbar() {
             <a href="/login" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-white hover:text-gray-900 font-medium transition-colors">
               Login
             </a>
-            <a href="/dashboard" target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium shadow-md hover:shadow-lg transform hover:scale-105">
+            <a href="/resumedashboard" target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium shadow-md hover:shadow-lg transform hover:scale-105">
               Get Started
             </a>
           </div>
@@ -89,7 +96,7 @@ function Navbar() {
                 <a href="/login" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 text-white hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
                   Login
                 </a>
-                <a href="/dashboard" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 mt-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium text-center" onClick={() => setIsMenuOpen(false)}>
+                <a href="/resumedashboard" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 mt-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium text-center" onClick={() => setIsMenuOpen(false)}>
                   Get Started
                 </a>
               </div>

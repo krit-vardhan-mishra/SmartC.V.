@@ -3,18 +3,18 @@
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 
-interface Resume {
-  id: string;
-  title: string;
-  template: string;
-  createdAt: string;
-}
+// interface Resume {
+//   id: string;
+//   title: string;
+//   template: string;
+//   createdAt: string;
+// }
 
-interface ResumeCardProps {
-  resume: Resume;
-}
+// interface ResumeCardProps {
+//   resume: Resume;
+// }
 
-const ResumeCard: React.FC<ResumeCardProps> = ({ resume }) => {
+const ResumeCard = ({ resume }) => {
   const navigate = useNavigate();
 
   return (

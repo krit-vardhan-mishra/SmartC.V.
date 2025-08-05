@@ -136,3 +136,14 @@ dist
 
 # SvelteKit build / generate output
 .svelte-kit
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore virtual environments
+venv/
+env/
+__pycache__/
+*.pyc
