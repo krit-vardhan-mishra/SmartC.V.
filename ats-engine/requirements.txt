@@ -1,7 +1,7 @@
 # SmartCV ATS Engine v2.0 - Modern Dependencies
 Flask==3.1.1
 flask-cors==6.0.1
-spacy==3.8.3
+spacy==3.8.2
 language-tool-python==2.8
 requests==2.32.3
 pdfplumber==0.11.4         # For extracting text from PDF resumes
