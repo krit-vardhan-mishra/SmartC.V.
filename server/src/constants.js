@@ -1,1 +1,1 @@
-export const DB_NAME = 'SmartCV';
+export const DB_NAME = 'smartcv';
