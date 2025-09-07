@@ -1,6 +1,11 @@
-# SmartC.V.
+# SmartCV
 
-# 📄 SmartResume – ATS Score Checker & Resume Builder
+![License](https://img.shields.io/badge/license-MIT-green)
+![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
+![GSSoC'25](https://img.shields.io/badge/GSSoC-2025-orange)
+
+
+# 📄 SmartCV – ATS Score Checker & Resume Builder
 
 🚀 An open-source, modern Resume Builder with a powerful ATS Score Checker that helps users build professional resumes and get instant feedback based on job descriptions.
 
@@ -20,6 +25,8 @@
 - 📊 Dashboard for saved resumes and reports
 - 📂 Resume versioning and history
 
+[⬆️ Back to Top](#smartcv)
+
 
 
 ## 🧱 Tech Stack
@@ -33,6 +40,8 @@
 | File Uploads  | Multer, React Dropzone         |
 | PDF Export    | html2pdf.js / Puppeteer        |
 | Hosting       | Vercel (FE), Render/Railway (BE), MongoDB Atlas |
+
+[⬆️ Back to Top](#smartcv)
 
 
 ## 🧠 ATS Score Checker – How It Works
@@ -49,6 +58,8 @@
 
 > The scoring engine is built with Python and uses NLP libraries like `spaCy`, `scikit-learn`, and `sentence-transformers`.
 
+[⬆️ Back to Top](#smartcv)
+
 
 ## 🧑‍💻 Getting Started
 
@@ -61,11 +72,14 @@
 
 ---
 
+[⬆️ Back to Top](#smartcv)
+
+
 ### 📦 Clone & Install
 
 ```bash
-git clone https://github.com/your-username/smartresume.git
-cd smartresume
+git clone https://github.com/your-username/smartcv.git
+cd smartcv
 
 # Install frontend
 cd client
@@ -88,11 +102,12 @@ smartresume/
 ```
 
 <p align="center">
-  <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;">
+  <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;"  target="_blank" rel="noopener noreferrer">
     ⬆️ Back to Top
   </a>
 </p>
 
+[⬆️ Back to Top](#smartcv)
 
 
 ## 📄 License

@@ -23,8 +23,10 @@ function Login() {
     try {
       const res = await loginUser(formData);
       if (res.status === 200) {
+        // SET THE FLAG HERE
+        localStorage.setItem('isLoggedIn', 'true');
         alert("Login successful!");
-
+        navigate("/resumedashboard");
       }
     } catch (err) {
       alert("Login failed");

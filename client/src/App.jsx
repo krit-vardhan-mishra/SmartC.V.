@@ -1,17 +1,18 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Navbar from "./global/Header";
+import Footer from "./global/Footer";
 
 export default function App() {
   return (
-    <div>
-      <nav className="p-4 bg-gray-100">
-        <Link to="/" className="mr-4">Home</Link>
-        <Link to="/skill-match">Skill Match</Link>
-        {/* add other nav links as needed */}
-      </nav>
-      <main className="p-6">
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+
+      <main className="flex-grow p-6">
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 }

@@ -1,2 +1,8 @@
 .venv
 venv/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+__pycache__/
+*.pyc

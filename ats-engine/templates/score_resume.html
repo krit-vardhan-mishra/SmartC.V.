@@ -6,620 +6,7 @@
   <title>SmartCV Professional | Enterprise ATS Resume Analysis</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #1a365d;
-      --secondary-color: #2c5282;
-      --accent-color: #3182ce;
-      --success-color: #38a169;
-      --warning-color: #d69e2e;
-      --error-color: #e53e3e;
-      --text-primary: #1a202c;
-      --text-secondary: #4a5568;
-      --bg-primary: #ffffff;
-      --bg-secondary: #f7fafc;
-      --bg-tertiary: #edf2f7;
-      --border-color: #e2e8f0;
-      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 75%, #f5576c 100%);
-      min-height: 100vh;
-      line-height: 1.6;
-      color: var(--text-primary);
-    }
-
-    .main-container {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
-
-    .professional-card {
-      background: var(--bg-primary);
-      border-radius: 20px;
-      box-shadow: var(--shadow-xl);
-      overflow: hidden;
-      max-width: 1200px;
-      width: 100%;
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .header-section {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .header-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-      opacity: 0.3;
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .logo-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .logo-icon {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .company-name {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.5rem;
-    }
-
-    .tagline {
-      font-size: 1.25rem;
-      font-weight: 400;
-      opacity: 0.9;
-      letter-spacing: 0.025em;
-    }
-
-    .content-section {
-      padding: 3rem 2rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 2rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -0.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-      border-radius: 2px;
-    }
-
-    .upload-container {
-      background: var(--bg-secondary);
-      border-radius: 16px;
-      border: 2px solid var(--border-color);
-      margin-bottom: 2rem;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .upload-container:hover {
-      border-color: var(--accent-color);
-      box-shadow: var(--shadow-md);
-    }
-
-    .tab-navigation {
-      display: flex;
-      background: var(--bg-tertiary);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .tab-button {
-      flex: 1;
-      padding: 1rem 2rem;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .tab-button.active {
-      color: var(--accent-color);
-      background: var(--bg-primary);
-      font-weight: 600;
-    }
-
-    .tab-button.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--accent-color);
-    }
-
-    .tab-content {
-      padding: 2rem;
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .input-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .input-label {
-      display: block;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .text-input {
-      width: 100%;
-      height: 250px;
-      padding: 1.5rem;
-      border: 2px solid var(--border-color);
-      border-radius: 12px;
-      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--text-primary);
-      background: var(--bg-primary);
-      resize: vertical;
-      transition: all 0.3s ease;
-    }
-
-    .text-input:focus {
-      outline: none;
-      border-color: var(--accent-color);
-      box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-    }
-
-    .file-upload-zone {
-      border: 2px dashed var(--border-color);
-      border-radius: 12px;
-      padding: 3rem 2rem;
-      text-align: center;
-      background: var(--bg-primary);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .file-upload-zone:hover {
-      border-color: var(--accent-color);
-      background: rgba(49, 130, 206, 0.02);
-    }
-
-    .file-upload-zone.dragover {
-      border-color: var(--accent-color);
-      background: rgba(49, 130, 206, 0.05);
-      transform: scale(1.02);
-    }
-
-    .upload-icon {
-      font-size: 3rem;
-      color: var(--accent-color);
-      margin-bottom: 1rem;
-    }
-
-    .upload-text {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .upload-subtext {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-
-    .file-input {
-      position: absolute;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-    }
-
-    .selected-file {
-      display: inline-flex;
-      align-items: center;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      margin-top: 1rem;
-      font-size: 0.875rem;
-      color: var(--text-primary);
-    }
-
-    .analyze-button {
-      width: 100%;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      border: none;
-      padding: 1.25rem 2rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .analyze-button:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .analyze-button:active {
-      transform: translateY(0);
-    }
-
-    .analyze-button:disabled {
-      background: var(--text-secondary);
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .loading-section {
-      display: none;
-      text-align: center;
-      padding: 3rem 2rem;
-      background: var(--bg-secondary);
-      border-radius: 16px;
-      margin: 2rem 0;
-    }
-
-    .loading-spinner {
-      width: 60px;
-      height: 60px;
-      border: 4px solid var(--border-color);
-      border-top: 4px solid var(--accent-color);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1.5rem;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .loading-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .loading-subtitle {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-
-    .results-container {
-      margin-top: 2rem;
-    }
-
-    .score-overview {
-      background: linear-gradient(135deg, var(--success-color) 0%, #48bb78 100%);
-      color: white;
-      padding: 2.5rem;
-      border-radius: 16px;
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .score-overview::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
-    }
-
-    .score-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .score-number {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .score-label {
-      font-size: 1.25rem;
-      font-weight: 500;
-      opacity: 0.95;
-      margin-bottom: 1rem;
-    }
-
-    .score-progress {
-      width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 1rem;
-    }
-
-    .score-progress-fill {
-      height: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 4px;
-      transition: width 1s ease-in-out;
-    }
-
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .metric-card {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .metric-card:hover {
-      border-color: var(--accent-color);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-    }
-
-    .metric-icon {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      color: white;
-      font-size: 1.5rem;
-    }
-
-    .metric-title {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-
-    .metric-value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent-color);
-    }
-
-    .feedback-section {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 2rem;
-      margin-top: 2rem;
-    }
-
-    .feedback-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .feedback-icon {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--warning-color), #ed8936);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      margin-right: 1rem;
-      font-size: 1.25rem;
-    }
-
-    .feedback-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .feedback-list {
-      list-style: none;
-    }
-
-    .feedback-item {
-      display: flex;
-      align-items: flex-start;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .feedback-item:last-child {
-      border-bottom: none;
-    }
-
-    .feedback-item-icon {
-      width: 24px;
-      height: 24px;
-      background: var(--success-color);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      margin-right: 1rem;
-      flex-shrink: 0;
-      font-size: 0.75rem;
-    }
-
-    .feedback-text {
-      color: var(--text-primary);
-      line-height: 1.6;
-    }
-
-    .error-container {
-      background: linear-gradient(135deg, var(--error-color), #f56565);
-      color: white;
-      padding: 2rem;
-      border-radius: 16px;
-      margin-top: 2rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .error-icon {
-      font-size: 2rem;
-      margin-right: 1rem;
-    }
-
-    .error-text {
-      font-size: 1.125rem;
-      font-weight: 500;
-    }
-
-    .metadata-section {
-      background: var(--bg-secondary);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-    }
-
-    .metadata-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-    }
-
-    .metadata-item {
-      text-align: center;
-    }
-
-    .metadata-label {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .metadata-value {
-      color: var(--accent-color);
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .main-container {
-        padding: 1rem;
-      }
-      
-      .header-section {
-        padding: 2rem 1rem;
-      }
-      
-      .company-name {
-        font-size: 2rem;
-      }
-      
-      .content-section {
-        padding: 2rem 1rem;
-      }
-      
-      .metrics-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .tab-button {
-        padding: 0.75rem 1rem;
-        font-size: 0.875rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='score_resume.css') }}">
 </head>
 <body>
   <div class="main-container">
@@ -640,7 +27,18 @@
 
       <div class="content-section">
         <h2 class="section-title">Advanced Resume Analysis</h2>
+
         
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+          <button class="analyze-button" onclick="window.open('https://github.com/yourusername/smartcv', '_blank', 'noopener,noreferrer')">
+            <i class="fab fa-github"></i> View on GitHub
+          </button>
+
+          <button class="analyze-button" onclick="window.open('https://yourdomain.com/get-started', '_blank', 'noopener,noreferrer')">
+            <i class="fas fa-rocket"></i> Get Started
+          </button>
+        </div>
+
         <div class="upload-container">
           <div class="tab-navigation">
             <button class="tab-button active" onclick="switchTab('text')">
@@ -704,20 +102,15 @@
 
   <script>
     function switchTab(tab) {
-      // Update tab buttons
       document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
-      
-      // Update tab content
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
       document.getElementById(tab + 'Tab').classList.add('active');
     }
 
-    // File upload handling
     document.getElementById('pdfUpload').addEventListener('change', function(e) {
       const file = e.target.files[0];
       const selectedFileDiv = document.getElementById('selectedFile');
-      
       if (file) {
         selectedFileDiv.innerHTML = `
           <div class="selected-file">
@@ -730,18 +123,14 @@
       }
     });
 
-    // Drag and drop functionality
     const uploadZone = document.querySelector('.file-upload-zone');
-    
     uploadZone.addEventListener('dragover', (e) => {
       e.preventDefault();
       uploadZone.classList.add('dragover');
     });
-    
     uploadZone.addEventListener('dragleave', () => {
       uploadZone.classList.remove('dragover');
     });
-    
     uploadZone.addEventListener('drop', (e) => {
       e.preventDefault();
       uploadZone.classList.remove('dragover');
@@ -761,7 +150,6 @@
       const errorSection = document.getElementById("errorSection");
       const analyzeButton = document.querySelector(".analyze-button");
 
-      // Reset displays
       resultSection.style.display = "none";
       feedbackSection.style.display = "none";
       errorSection.style.display = "none";
@@ -769,7 +157,6 @@
       analyzeButton.disabled = true;
 
       let formData = new FormData();
-
       if (fileInput.files.length > 0) {
         formData.append("resume_file", fileInput.files[0]);
       } else if (textArea.value.trim().length > 0) {
@@ -805,10 +192,9 @@
       const resultSection = document.getElementById("resultSection");
       const feedbackSection = document.getElementById("feedbackSection");
 
-      // Determine score color
-      let scoreColor = '#e53e3e'; // Red for low scores
-      if (data.total_score >= 70) scoreColor = '#38a169'; // Green for good scores
-      else if (data.total_score >= 50) scoreColor = '#d69e2e'; // Yellow for average scores
+      let scoreColor = '#e53e3e';
+      if (data.total_score >= 70) scoreColor = '#38a169';
+      else if (data.total_score >= 50) scoreColor = '#d69e2e';
 
       resultSection.innerHTML = `
         <div class="score-overview" style="background: linear-gradient(135deg, ${scoreColor} 0%, ${scoreColor}cc 100%);">
@@ -823,81 +209,38 @@
         
         <div class="metrics-grid">
           <div class="metric-card">
-            <div class="metric-icon">
-              <i class="fas fa-search"></i>
-            </div>
+            <div class="metric-icon"><i class="fas fa-search"></i></div>
             <div class="metric-title">Keyword Optimization</div>
             <div class="metric-value">${data.score_breakdown.keyword_match}</div>
           </div>
           <div class="metric-card">
-            <div class="metric-icon">
-              <i class="fas fa-align-left"></i>
-            </div>
+            <div class="metric-icon"><i class="fas fa-align-left"></i></div>
             <div class="metric-title">Format Structure</div>
             <div class="metric-value">${data.score_breakdown.formatting}</div>
           </div>
           <div class="metric-card">
-            <div class="metric-icon">
-              <i class="fas fa-language"></i>
-            </div>
+            <div class="metric-icon"><i class="fas fa-language"></i></div>
             <div class="metric-title">Language Quality</div>
             <div class="metric-value">${data.score_breakdown.sentence_structure}</div>
           </div>
           <div class="metric-card">
-            <div class="metric-icon">
-              <i class="fas fa-ruler"></i>
-            </div>
+            <div class="metric-icon"><i class="fas fa-ruler"></i></div>
             <div class="metric-title">Content Length</div>
             <div class="metric-value">${data.score_breakdown.length}</div>
           </div>
         </div>
-
-        ${data.extraction_method || data.processing_time ? `
-        <div class="metadata-section">
-          <div class="metadata-grid">
-            ${data.extraction_method ? `
-            <div class="metadata-item">
-              <div class="metadata-label">Extraction Method</div>
-              <div class="metadata-value">${data.extraction_method}</div>
-            </div>
-            ` : ''}
-            ${data.processing_time ? `
-            <div class="metadata-item">
-              <div class="metadata-label">Processing Time</div>
-              <div class="metadata-value">${data.processing_time.toFixed(2)}s</div>
-            </div>
-            ` : ''}
-            ${data.keywords_used ? `
-            <div class="metadata-item">
-              <div class="metadata-label">Keywords Analyzed</div>
-              <div class="metadata-value">${data.keywords_used}</div>
-            </div>
-            ` : ''}
-            ${data.text_length ? `
-            <div class="metadata-item">
-              <div class="metadata-label">Content Length</div>
-              <div class="metadata-value">${data.text_length} chars</div>
-            </div>
-            ` : ''}
-          </div>
-        </div>
-        ` : ''}
       `;
-      
+
       feedbackSection.innerHTML = `
         <div class="feedback-section">
           <div class="feedback-header">
-            <div class="feedback-icon">
-              <i class="fas fa-lightbulb"></i>
-            </div>
+            <div class="feedback-icon"><i class="fas fa-lightbulb"></i></div>
             <div class="feedback-title">Professional Optimization Recommendations</div>
           </div>
           <ul class="feedback-list">
             ${data.feedback.map(item => `
               <li class="feedback-item">
-                <div class="feedback-item-icon">
-                  <i class="fas fa-check"></i>
-                </div>
+                <div class="feedback-item-icon"><i class="fas fa-check"></i></div>
                 <div class="feedback-text">${item}</div>
               </li>
             `).join("")}
@@ -907,8 +250,6 @@
 
       resultSection.style.display = "block";
       feedbackSection.style.display = "block";
-      
-      // Smooth scroll to results
       resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -916,16 +257,13 @@
       const errorSection = document.getElementById("errorSection");
       const loadingSection = document.getElementById("loadingSection");
       const analyzeButton = document.querySelector(".analyze-button");
-      
+
       errorSection.innerHTML = `
         <div class="error-container">
-          <div class="error-icon">
-            <i class="fas fa-exclamation-triangle"></i>
-          </div>
+          <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
           <div class="error-text">${message}</div>
         </div>
       `;
-      
       errorSection.style.display = "block";
       loadingSection.style.display = "none";
       analyzeButton.disabled = false;
