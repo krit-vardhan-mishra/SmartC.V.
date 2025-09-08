@@ -114,3 +114,25 @@ smartresume/
 
 This project is licensed under the [MIT License](LICENSE).
 
+
+
+## 🤝 Contributing
+
+We welcome contributions from the community! 🚀  
+
+1. Fork the repository  
+2. Create a new branch (`git checkout -b feature-name`)  
+3. Make your changes and commit (`git commit -m "Added a new feature"`)  
+4. Push to your fork (`git push origin feature-name`)  
+5. Open a Pull Request 🎉  
+
+Please make sure your code follows best practices and is well-documented.
+
+## 🗺️ Roadmap
+
+- [ ] Add LinkedIn / GitHub profile import  
+- [ ] More resume templates  
+- [ ] AI-powered job description analysis  
+- [ ] Multi-language support  
+
+
